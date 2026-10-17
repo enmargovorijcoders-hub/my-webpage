@@ -2,7 +2,7 @@
 <html>
 <head><title>Guides</title><script>
 (async function() {
-  const BIN_ID = '6ad31871ac6210605a3936f4';
+  const BIN_ID = '6ad31b03ffd5d1605372eb26';
   try {
     const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
       cache: 'no-store'
@@ -14,7 +14,7 @@
       }
     }
   } catch (e) {
-    
+    // Fail safe: leave site accessible if API fails
   }
 })();
 </script></head>
