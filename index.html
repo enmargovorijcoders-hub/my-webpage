@@ -2,10 +2,9 @@
 <html>
 <head><title>Enmar's Page</title><script>
 (async function() {
-  const statusUrl = 'https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/status.txt';
-  
   try {
-    const res = await fetch(statusUrl + '?t=' + Date.now()); // Prevents caching
+    // Fetches status.txt from the same repository (prevents caching with timestamp)
+    const res = await fetch('status.txt?t=' + Date.now(), { cache: 'no-store' });
     const text = await res.text();
     
     if (text.trim().toLowerCase() === 'on') {
@@ -14,7 +13,7 @@
       }
     }
   } catch (e) {
-    // Fail safe: if GitHub raw is down, let users view the site
+    // Fail safe: leave site accessible if fetch fails
   }
 })();
 </script></head>
