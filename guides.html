@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><title>Guides</title>
+<head><title>Guides</title><script>
+(async function() {
+  const BIN_ID = '6ad31871ac6210605a3936f4';
+  try {
+    const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+      cache: 'no-store'
+    });
+    const data = await res.json();
+    if (data.record && data.record.maintenance === true) {
+      if (!window.location.pathname.endsWith('maintenance.html')) {
+        window.location.href = 'maintenance.html';
+      }
+    }
+  } catch (e) {
+    
+  }
+})();
+</script></head>
 <body>
 <p>Depending on your model, there are just a couple of easy steps to ROMing your phone:</p>
 1. Unlocking your Bootloader: Most of the time its just as easy as going to about clicking your biuld number until it says "You Are a Developer!" toggleing OEM Unlocking and USB Debugging, then on your computer with the phone conected and USB debuging enabled (<a href="https://www.xda-developers.com/install-adb-windows-macos-linux/">Click Here</a> for a guide on how to enable and install ADB on your Mac/Linux/Windows) if on Windows you have to get drivers for your device by looking it up on <a href="https://google.com">google</a> and installing those drivers. Once you have adb ready on you Windows pc type: "adb reboot bootloader" on Mac/Linux type: "./adb reboot bootloader" then when you are in fastboot it should say it on the screen type on Windows: "fastboot oem unlock" or "fastboot flashing unlock" on Macos/Linux: "./fastboot oem unlock" or "fastboot flashing unlock" press Vol+ on your device and done your bootloader is unlocked.<p style="color:red">Warning this will delete all of you data on the device!</p></details>
