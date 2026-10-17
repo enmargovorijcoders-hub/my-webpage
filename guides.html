@@ -2,19 +2,19 @@
 <html>
 <head><title>Guides</title><script>
 (async function() {
-  const BIN_ID = '6ad31b03ffd5d1605372eb26';
+  const statusUrl = 'https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/status.txt';
+  
   try {
-    const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
-      cache: 'no-store'
-    });
-    const data = await res.json();
-    if (data.record && data.record.maintenance === true) {
+    const res = await fetch(statusUrl + '?t=' + Date.now()); // Prevents caching
+    const text = await res.text();
+    
+    if (text.trim().toLowerCase() === 'on') {
       if (!window.location.pathname.endsWith('maintenance.html')) {
         window.location.href = 'maintenance.html';
       }
     }
   } catch (e) {
-    // Fail safe: leave site accessible if API fails
+    // Fail safe: if GitHub raw is down, let users view the site
   }
 })();
 </script></head>
