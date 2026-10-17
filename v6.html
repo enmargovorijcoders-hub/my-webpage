@@ -2,19 +2,18 @@
 <html>
 <head><title>Enmar's Page</title><script>
 (async function() {
-  const BIN_ID = '6ad31b03ffd5d1605372eb26';
   try {
-    const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
-      cache: 'no-store'
-    });
-    const data = await res.json();
-    if (data.record && data.record.maintenance === true) {
+    // Fetches status.txt from the same repository (prevents caching with timestamp)
+    const res = await fetch('status.txt?t=' + Date.now(), { cache: 'no-store' });
+    const text = await res.text();
+    
+    if (text.trim().toLowerCase() === 'on') {
       if (!window.location.pathname.endsWith('maintenance.html')) {
         window.location.href = 'maintenance.html';
       }
     }
   } catch (e) {
-    // Fail safe: leave site accessible if API fails
+    // Fail safe: leave site accessible if fetch fails
   }
 })();
 </script></head>
