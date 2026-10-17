@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Maintenance</title>
+  <script>
+(async function() {
+  try {
+    // Fetches status.txt from the same repository (prevents caching with timestamp)
+    const res = await fetch('status.txt?t=' + Date.now(), { cache: 'no-store' });
+    const text = await res.text();
+    
+    if (text.trim().toLowerCase() === 'off') {
+      if (window.location.pathname.endsWith('maintenance.html')) {
+        window.location.href = 'index.html';
+      }
+    }
+  } catch (e) {
+    // Fail safe: leave site accessible if fetch fails
+  }
+})();
+</script>
 
 </head>
 <body>
