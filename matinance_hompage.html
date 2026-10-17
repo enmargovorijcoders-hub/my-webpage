@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head><title>Matinace Homepage</title>
+  <!--Olny AI generated Code Besides the creation tool-->
+    <script>
+(async function() {
+  try {
+    // Fetches status.txt from the same repository (prevents caching with timestamp)
+    const res = await fetch('status.txt?t=' + Date.now(), { cache: 'no-store' });
+    const text = await res.text();
+    
+    if (text.trim().toLowerCase() === 'off') {
+      if (window.location.pathname.endsWith('maintenance.html')) {
+        window.location.href = 'index.html';
+      }
+    }
+  } catch (e) {
+    // Fail safe: leave site accessible if fetch fails
+  }
+})();
+</script>
+<meta http-equiv="refresh" content="30">
+</head>
+<body>
+<!--Now all human generated content-->
+<title>Enmar's Page</title>
+
+<h1>Welcome to my page!</h1>
+<p>My name is Enmar. Here you can find some info about me and a general guide to flashing phones.</p>
+<h1>This Is The Homepage. If you want to get back here, just scroll down and click>Return to homepage<</h1>
+<p>I'm a hobbyist who likes to code, hack, and flash phones. <a href="https://www.youtube.com/@fonestuf"> Click here</a> for my YouTube channel, although I haven't posted in a while.</p>
+<h1>My Guides:</h1>
+
+
+<p>Not Avalable During Matinance.</p>
+<h1>Version Catulog:</h1>
+<p>Not Avalable During Matinance.</p>
+
+<h1> Basic Phones I Suggest Useing</h1>
+<details> <summary>Which phone I main</summary> <img src="images__8_.jpeg" alt="The Samsung Galaxy S26 (base model)"> <p>This is the phone I main the Samsung Galaxy S26 (base)</p></details>
+<details><summary>Basic phone for teens to reduce screen time</summary>
+<img src="images_9.jpeg" alt="The Apple iPhone Se (1st Generation)">
+<p>The Apple iPhone Se (1st Generation)</p></details>
+<h1>About</h1>
+  <details><summary>About Site</summary>
+<p>Version: Not Avalable During Matinance. 
+<br>Last Updated (DD/MM/YYYY): Not Avalable During Matinance.
+  </details>
+<br>
+<br>
+<br>
+<a href="maintenance.html">>Back to maintenance page<</a>
+</body>
+</html>
